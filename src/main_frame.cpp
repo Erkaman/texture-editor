@@ -3,29 +3,35 @@
 #include "left_panel.hpp"
 #include "right_panel.hpp"
 
-void MainFrame::OnExit(wxCommandEvent& event)
-{
-    Close( true );
-}
-
-
 MainFrame::MainFrame(const wxString& title)
-    : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(890, 650))
-{
-    m_parent = new wxPanel(this, wxID_ANY);
+    : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(890, 650)) {
 
-    Connect(wxID_EXIT, wxEVT_COMMAND_MENU_SELECTED,
-	    wxCommandEventHandler(MainFrame::OnExit));
-
-
+    /*
+      Make menu bar.
+     */
     wxMenu *menuFile = new wxMenu;
     menuFile->Append(wxID_EXIT);
     wxMenu *menuHelp = new wxMenu;
     menuHelp->Append(wxID_ABOUT);
     wxMenuBar *menuBar = new wxMenuBar;
-    menuBar->Append( menuFile, "&File" );
     menuBar->Append( menuHelp, "&Help" );
     SetMenuBar( menuBar );
+
+    /*
+      connect events to menubar.
+     */
+    Connect(wxID_EXIT, wxEVT_COMMAND_MENU_SELECTED,
+	    wxCommandEventHandler(MainFrame::OnExit));
+
+    Connect(wxID_ABOUT, wxEVT_COMMAND_MENU_SELECTED,
+	    wxCommandEventHandler(MainFrame::OnAbout));
+
+
+    /*
+      Make panels
+     */
+
+    m_parent = new wxPanel(this, wxID_ANY);
 
     wxBoxSizer *hbox = new wxBoxSizer(wxHORIZONTAL);
 
@@ -38,4 +44,13 @@ MainFrame::MainFrame(const wxString& title)
     m_parent->SetSizer(hbox);
 
     this->Centre();
+}
+
+void MainFrame::OnExit(wxCommandEvent& event) {
+    Close( true );
+}
+
+void MainFrame::OnAbout(wxCommandEvent& event) {
+    wxMessageBox( "This is an awesome app",
+                  "About Hello World", wxOK | wxICON_INFORMATION );
 }

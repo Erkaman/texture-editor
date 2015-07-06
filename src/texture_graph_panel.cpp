@@ -7,6 +7,5 @@ TextureGraphPanel::TextureGraphPanel(wxPanel * parent)
 
 {
   m_parent = parent;
-
-  node = new TextureGraphNode(this, wxID_ANY, wxT("Perlin"), wxPoint(14,14));
+  node = new TextureGraphNode(this, wxID_ANY, wxT("Perlin"), wxPoint(30,30));
 }

@@ -1,51 +1,41 @@
 #include "texture_graph_node.hpp"
 
 
-TextureGraphNode::TextureGraphNode(wxWindow* parent, wxWindowID winid, const wxString& typeName, const wxPoint& pos): wxControl(parent, winid, pos), m_typeName(typeName) {
+TextureGraphNode::TextureGraphNode(wxWindow* parent, wxWindowID winid, const wxString& typeName, const wxPoint& pos):
+    wxPanel(parent, winid, pos, wxSize(NODE_WIDTH, NODE_HEIGHT), wxBORDER_NONE), m_typeName(typeName) {
+    Connect(wxEVT_PAINT, wxPaintEventHandler(TextureGraphNode::PaintEvent));
 
-    SetMinSize( wxSize(NODE_WIDTH, NODE_HEIGHT) );
-
-    Connect(wxEVT_PAINT, wxPaintEventHandler(TextureGraphNode::paintEvent));
-
-    Centre();
+    image = new wxImage("perlin.png", wxBITMAP_TYPE_PNG);
+    bitmap = new wxBitmap(*image);
 }
 
-void TextureGraphNode::render(wxDC&  dc)
+void TextureGraphNode::Render(wxDC&  dc)
 {
-    int x;
-    int y;
-    GetPosition(&x,&y);
-/*    wxString str;
-    str.Printf(wxT("pos %d %d\n."), x,y);
-    wxPuts(str);
-*/
+
     wxColour gray;
     gray.Set(wxT("#d4d4d4"));
 
-    //dc.DrawEllipse(20, 20, 90, 60);
+    wxColour white;
+    white.Set(wxT("#ffffff"));
 
     dc.SetBrush(wxBrush(gray));
+    dc.SetPen(wxPen(white));
 
-//    dc.DrawRectangle( x, y, 80, 30 );
+    dc.DrawRoundedRectangle(0, 0, NODE_WIDTH, NODE_HEIGHT, 10);
 
-    dc.DrawRectangle( 10, 10, 210, 60 );
+   dc.DrawText( wxT("eric"), 5, 5 );
 
-    dc.DrawText( wxT("eric"), 20, 15 );
+   dc.DrawBitmap(*bitmap,5,30, false);
 
 
-//  dc.DrawRoundedRectangle(130, 20, 90, 60, 10);
+
+   dc.DrawCircle(5, 100, 20);
 
 }
 
-
-void TextureGraphNode::paintEvent(wxPaintEvent & evt)
+void TextureGraphNode::PaintEvent(wxPaintEvent & evt)
 {
     // depending on your system you may need to look at double-buffered dcs
     wxPaintDC dc(this);
-    render(dc);
-}
-
-void TextureGraphNode::paintNow(){
-    wxClientDC dc(this);
-    render(dc);
+    Render(dc);
 }

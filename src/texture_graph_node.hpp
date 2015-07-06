@@ -2,7 +2,7 @@
 
 #include <wx/wx.h>
 
-class TextureGraphNode : public wxControl{
+class TextureGraphNode : public wxPanel{
 
 
 private:
@@ -11,26 +11,18 @@ private:
 
     wxString m_typeName;
 
+    wxImage* image;
+    wxBitmap* bitmap;
+
 public:
     TextureGraphNode(wxWindow* parent, wxWindowID winid, const wxString& typeName, const wxPoint& pos);
 
-
-//    void OnPaint(wxPaintEvent& event);
-
-    void paintEvent(wxPaintEvent & evt);
-
-
-
-    void paintNow();
-
-
-    void render(wxDC&  dc);
-
-
+    void PaintEvent(wxPaintEvent & evt);
+    void Render(wxDC&  dc);
 
     /*
       CONSTANTS
     */
-    constexpr static int NODE_WIDTH = 200;
-    constexpr static int NODE_HEIGHT = 50;
+    constexpr static int NODE_WIDTH = 80;
+    constexpr static int NODE_HEIGHT = 110;
 };

@@ -1,6 +1,6 @@
 #include "main_frame.hpp"
 
-#include "left_panel.hpp"
+#include "texture_graph_panel.hpp"
 #include "right_panel.hpp"
 
 MainFrame::MainFrame(const wxString& title)
@@ -35,7 +35,7 @@ MainFrame::MainFrame(const wxString& title)
 
     wxBoxSizer *hbox = new wxBoxSizer(wxHORIZONTAL);
 
-    m_lp = new LeftPanel(m_parent);
+    m_lp = new TextureGraphPanel(m_parent);
     m_rp = new RightPanel(m_parent);
 
     hbox->Add(m_lp, 3, wxEXPAND | wxALL, 0);

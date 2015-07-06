@@ -1,6 +1,8 @@
+#pragma once
+
 #include <wx/wx.h>
 
-class LeftPanel;
+class TextureGraphPanel;
 class RightPanel;
 class wxPanel;
 
@@ -12,7 +14,7 @@ public:
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
 
-    LeftPanel *m_lp;
+    TextureGraphPanel *m_lp;
     RightPanel *m_rp;
     wxPanel *m_parent;
 

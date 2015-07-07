@@ -5,7 +5,7 @@
 static constexpr int PERLIN_ITEM_ID = 101;
 
 TextureGraphPanel::TextureGraphPanel(wxPanel * parent):
-    wxPanel(parent, -1, wxPoint(-1, -1), wxSize(-1, -1), wxBORDER_SIMPLE) {
+    wxPanel(parent, -1, wxPoint(-1, -1), wxSize(-1, -1), wxBORDER_SIMPLE),m_selectedNodeIndex(-1) {
     m_parent = parent;
 
 
@@ -24,10 +24,25 @@ TextureGraphPanel::TextureGraphPanel(wxPanel * parent):
 }
 
 void TextureGraphPanel::OnRightClick(wxContextMenuEvent& event) {
-    contextMenuPosition = ScreenToClient(event.GetPosition());
-    PopupMenu(m_contextMenu, contextMenuPosition);
+    m_contextMenuPosition = ScreenToClient(event.GetPosition());
+    PopupMenu(m_contextMenu, m_contextMenuPosition);
 }
 
 void TextureGraphPanel::OnCreatePerlin(wxCommandEvent& event) {
-    nodes.push_back(new TextureGraphNode(this, wxID_ANY, wxT("Perlin"),contextMenuPosition));
+    int index = m_nodes.size();
+    m_nodes.push_back(new TextureGraphNode(this, wxID_ANY, wxT("Perlin"),m_contextMenuPosition, index));
+}
+
+void TextureGraphPanel::SelectNode(int nodeIndex) {
+
+    // unselect the old node.
+    if(m_selectedNodeIndex != -1) {
+	m_nodes[m_selectedNodeIndex]->Select(false);
+    }
+
+    // select the new node.
+    if(nodeIndex != m_selectedNodeIndex)
+	m_nodes[nodeIndex]->Select(true);
+
+    m_selectedNodeIndex = nodeIndex;
 }

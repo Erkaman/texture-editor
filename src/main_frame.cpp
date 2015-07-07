@@ -4,7 +4,7 @@
 #include "right_panel.hpp"
 
 MainFrame::MainFrame(const wxString& title)
-    : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(890, 650)) {
+    : wxFrame(NULL, wxID_ANY, title, wxPoint(100,300) /*wxDefaultPosition*/, wxSize(890, 650)) {
 
     /*
       Make menu bar.
@@ -39,7 +39,7 @@ MainFrame::MainFrame(const wxString& title)
 
     m_parent->SetSizer(hbox);
 
-    this->Centre();
+//    this->Centre();
 }
 
 void MainFrame::OnExit(wxCommandEvent& event) {

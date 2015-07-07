@@ -2,6 +2,8 @@
 
 #include <wx/wx.h>
 
+class TextureGraphPanel;
+
 class TextureGraphNode : public wxPanel{
 
 
@@ -11,21 +13,32 @@ private:
       INSTANCE VARIABLES
      */
 
-    wxPanel *m_parent;
-
-    wxString m_typeName;
+    /*
+      VARIABLES USED FOR DRAWING:
+     */
 
     wxImage* image;
     wxBitmap* bitmap;
-
 
     wxFont m_circleFont;
 
     wxBrush m_backgroundBrush;
     wxPen m_unselectedOutlinePen;
+    wxPen m_selectedOutlinePen;
 
     wxPen m_outputCircleOutlinePen;
     wxPen m_inputCircleOutlinePen;
+
+    /*
+      MISC VARIABLES
+     */
+
+    wxString m_typeName;
+
+    // the index of this node in the list of TextureGraphNodes in TextureGraphPanel.
+    int m_index;
+    TextureGraphPanel* m_parent;
+    bool m_isSelected;
 
     /*
       INSTANCE METHODS:
@@ -35,10 +48,15 @@ private:
 
 
 public:
-    TextureGraphNode(wxWindow* parent, wxWindowID winid, const wxString& typeName, const wxPoint& pos);
+    TextureGraphNode(TextureGraphPanel* parent, wxWindowID winid, const wxString& typeName, const wxPoint& pos, const int index);
 
-    void PaintEvent(wxPaintEvent & evt);
+    void OnPaint(wxPaintEvent & evt);
+    void MouseDown(wxMouseEvent& event);
+
     void Render(wxDC&  dc);
+
+    void Select(bool flag);
+
 
     /*
       CONSTANTS

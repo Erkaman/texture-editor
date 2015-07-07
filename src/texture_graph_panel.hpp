@@ -18,16 +18,20 @@ private:
     wxPanel *m_parent;
     wxMenu *m_contextMenu;
 
+    std::vector<TextureGraphNode*> m_nodes;
 
-    std::vector<TextureGraphNode*> nodes;
-
-    wxPoint contextMenuPosition;
+    wxPoint m_contextMenuPosition;
+    int m_selectedNodeIndex;
 
 public:
     TextureGraphPanel(wxPanel *parent);
 
+    void SelectNode(int nodeIndex);
+
+    /*
+      LISTENERS
+     */
     void OnRightClick(wxContextMenuEvent& event);
     void OnCreatePerlin(wxCommandEvent& event);
-
 
 };

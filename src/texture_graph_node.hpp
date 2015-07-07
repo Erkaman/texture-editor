@@ -39,6 +39,10 @@ private:
     int m_index;
     TextureGraphPanel* m_parent;
     bool m_isSelected;
+    bool m_isMouseDown;
+
+    wxCoord mousePrevX;
+    wxCoord mousePrevY;
 
     /*
       INSTANCE METHODS:
@@ -52,6 +56,10 @@ public:
 
     void OnPaint(wxPaintEvent & evt);
     void MouseDown(wxMouseEvent& event);
+    void MouseUp(wxMouseEvent& event);
+    void MouseMoved(wxMouseEvent& event);
+
+
 
     void Render(wxDC&  dc);
 

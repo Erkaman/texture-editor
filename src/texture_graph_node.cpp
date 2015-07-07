@@ -8,10 +8,13 @@ TextureGraphNode::TextureGraphNode(TextureGraphPanel* parent, wxWindowID winid, 
     m_typeName(typeName),
     m_index(index),
     m_parent(parent),
-    m_isSelected(false)
+    m_isSelected(false),
+    m_isMouseDown(false)
 {
     Bind(wxEVT_PAINT, &TextureGraphNode::OnPaint, this);
     Bind(wxEVT_LEFT_DOWN, &TextureGraphNode::MouseDown, this);
+    Bind(wxEVT_LEFT_UP, &TextureGraphNode::MouseUp, this);
+    Bind(wxEVT_MOTION, &TextureGraphNode::MouseMoved, this);
 
     image = new wxImage("perlin.png", wxBITMAP_TYPE_PNG);
     bitmap = new wxBitmap(*image);
@@ -62,14 +65,44 @@ void TextureGraphNode::DrawTextCircle(wxDC& dc, const wxPen& pen, const wxCoord 
 }
 
 void TextureGraphNode::MouseDown(wxMouseEvent& event) {
-    printf("press\n");
+    // make sure that it becomes selected if necessary
+    if(!m_isSelected)
+	m_parent->SelectNode(m_index);
 
-    m_parent->SelectNode(m_index);
-    // notify parent that this node has been selected.
+    printf("mouse down\n");
+    m_isMouseDown = true;
+    mousePrevX = event.GetX();
+    mousePrevY = event.GetY();
+
+
+}
+
+void TextureGraphNode::MouseUp(wxMouseEvent& event) {
+    printf("mouse up\n");
+
+    m_isMouseDown = false;
 }
 
 void TextureGraphNode::Select(bool flag) {
-    printf("select: %d\n", flag);
     m_isSelected = flag;
     Refresh();
+}
+
+void TextureGraphNode::MouseMoved(wxMouseEvent& event) {
+    if(m_isMouseDown) {
+
+	wxCoord mouseCurX = event.GetX();
+	wxCoord mouseCurY = event.GetY();
+
+	wxCoord mouseDx = mouseCurX  - mousePrevX;
+	wxCoord mouseDy = mouseCurY - mousePrevY;
+
+	SetPosition(GetPosition() + wxPoint(mouseDx, mouseDy));
+
+	printf("moved: %d, %d\n", mouseDx, mouseDy );
+
+	mousePrevX = mouseCurX;
+	mousePrevY = mouseCurY;
+
+    }
 }

@@ -4,10 +4,18 @@
 
 static constexpr int PERLIN_ITEM_ID = 101;
 
+void TextureGraphPanel::CreateTestNode(const wxPoint& point) {
+    int index = m_nodes.size();
+    m_nodes.push_back(new TextureGraphNode(this, wxID_ANY, wxT("Perlin"),point, index));
+}
+
 TextureGraphPanel::TextureGraphPanel(wxPanel * parent):
     wxPanel(parent, -1, wxPoint(-1, -1), wxSize(-1, -1), wxBORDER_SIMPLE),m_selectedNodeIndex(-1) {
     m_parent = parent;
 
+    CreateTestNode(wxPoint(100,100));
+
+    CreateTestNode(wxPoint(250,100));
 
 
     /*
@@ -29,8 +37,7 @@ void TextureGraphPanel::OnRightClick(wxContextMenuEvent& event) {
 }
 
 void TextureGraphPanel::OnCreatePerlin(wxCommandEvent& event) {
-    int index = m_nodes.size();
-    m_nodes.push_back(new TextureGraphNode(this, wxID_ANY, wxT("Perlin"),m_contextMenuPosition, index));
+    CreateTestNode(m_contextMenuPosition);
 }
 
 void TextureGraphPanel::SelectNode(int nodeIndex) {

@@ -23,6 +23,8 @@ private:
     wxPoint m_contextMenuPosition;
     int m_selectedNodeIndex;
 
+    void CreateTestNode(const wxPoint& point);
+
 public:
     TextureGraphPanel(wxPanel *parent);
 

@@ -41,8 +41,8 @@ private:
     bool m_isSelected;
     bool m_isMouseDown;
 
-    wxCoord mousePrevX;
-    wxCoord mousePrevY;
+    wxCoord mouseX;
+    wxCoord mouseY;
 
     /*
       INSTANCE METHODS:

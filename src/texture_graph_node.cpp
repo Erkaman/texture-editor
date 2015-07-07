@@ -33,7 +33,6 @@ void TextureGraphNode::Render(wxDC&  dc)
 {
     dc.SetBrush(m_backgroundBrush);
 
-    printf("redraw: %d", m_isSelected);
     dc.SetPen(m_isSelected ? m_selectedOutlinePen : m_unselectedOutlinePen);
 
     dc.DrawRoundedRectangle(0,
@@ -69,17 +68,18 @@ void TextureGraphNode::MouseDown(wxMouseEvent& event) {
     if(!m_isSelected)
 	m_parent->SelectNode(m_index);
 
-    printf("mouse down\n");
+
+    CaptureMouse();
+
     m_isMouseDown = true;
-    mousePrevX = event.GetX();
-    mousePrevY = event.GetY();
+    mouseX = event.GetX();
+    mouseY = event.GetY();
 
 
 }
 
 void TextureGraphNode::MouseUp(wxMouseEvent& event) {
-    printf("mouse up\n");
-
+    ReleaseMouse();
     m_isMouseDown = false;
 }
 
@@ -91,18 +91,15 @@ void TextureGraphNode::Select(bool flag) {
 void TextureGraphNode::MouseMoved(wxMouseEvent& event) {
     if(m_isMouseDown) {
 
-	wxCoord mouseCurX = event.GetX();
-	wxCoord mouseCurY = event.GetY();
 
-	wxCoord mouseDx = mouseCurX  - mousePrevX;
-	wxCoord mouseDy = mouseCurY - mousePrevY;
+	wxPoint mouseOnScreen = wxGetMousePosition();
 
-	SetPosition(GetPosition() + wxPoint(mouseDx, mouseDy));
+        int newx = mouseOnScreen.x - mouseX;
 
-	printf("moved: %d, %d\n", mouseDx, mouseDy );
+        int newy = mouseOnScreen.y - mouseY;
 
-	mousePrevX = mouseCurX;
-	mousePrevY = mouseCurY;
+        Move( m_parent->ScreenToClient( wxPoint(newx, newy) ) );
+
 
     }
 }

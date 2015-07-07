@@ -25,17 +25,14 @@ void TextureGraphNode::Render(wxDC&  dc)
     dc.SetBrush(m_backgroundBrush);
     dc.SetPen(m_unselectedOutlinePen);
 
-    dc.DrawRoundedRectangle(0, 0, BOX_WIDTH, BOX_HEIGHT, 10);
+    dc.DrawRoundedRectangle(0,
+			    0, BOX_WIDTH, BOX_HEIGHT, 10);
 
    dc.DrawText( wxT("eric"), 5, 5 );
 
    dc.DrawBitmap(*bitmap,5,30, false);
 
-
    DrawTextCircle(dc, m_outputCircleOutlinePen, NODE_WIDTH/2, BOX_HEIGHT-CIRCLE_RADIUS + 6, "T");
-
-//   DrawTextCircle(dc, m_inputCircleOutlinePen, NODE_WIDTH/4, 0, "A");
-
 }
 
 void TextureGraphNode::PaintEvent(wxPaintEvent & evt)

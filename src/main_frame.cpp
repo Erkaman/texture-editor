@@ -20,12 +20,8 @@ MainFrame::MainFrame(const wxString& title)
     /*
       connect events to menubar.
      */
-    Connect(wxID_EXIT, wxEVT_COMMAND_MENU_SELECTED,
-	    wxCommandEventHandler(MainFrame::OnExit));
-
-    Connect(wxID_ABOUT, wxEVT_COMMAND_MENU_SELECTED,
-	    wxCommandEventHandler(MainFrame::OnAbout));
-
+    Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnExit, this, wxID_EXIT);
+    Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnAbout, this, wxID_ABOUT);
 
     /*
       Make panels

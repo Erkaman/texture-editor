@@ -6,7 +6,7 @@ TextureGraphNode::TextureGraphNode(wxWindow* parent, wxWindowID winid, const wxS
     m_typeName(typeName),
     m_circleFont(wxFontInfo(10).Bold())
 {
-    Connect(wxEVT_PAINT, wxPaintEventHandler(TextureGraphNode::PaintEvent));
+    Bind(wxEVT_PAINT, &TextureGraphNode::PaintEvent, this);
 
     image = new wxImage("perlin.png", wxBITMAP_TYPE_PNG);
     bitmap = new wxBitmap(*image);

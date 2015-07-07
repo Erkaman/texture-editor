@@ -24,11 +24,14 @@ private:
     wxBrush m_backgroundBrush;
     wxPen m_unselectedOutlinePen;
 
+    wxPen m_outputCircleOutlinePen;
+    wxPen m_inputCircleOutlinePen;
+
     /*
       INSTANCE METHODS:
      */
 
-    void DrawTextCircle(wxDC& dc, const wxCoord x, const wxCoord y, const wxString& str);
+    void DrawTextCircle(wxDC& dc, const wxPen& pen, const wxCoord x, const wxCoord y, const wxString& str);
 
 
 public:
@@ -41,7 +44,11 @@ public:
       CONSTANTS
     */
     constexpr static int NODE_WIDTH = 80;
-    constexpr static int NODE_HEIGHT = 110;
+    constexpr static int NODE_HEIGHT = 120;
+
+    constexpr static int BOX_WIDTH = 80;
+    constexpr static int BOX_HEIGHT = NODE_HEIGHT-10;
+
     constexpr static int CIRCLE_RADIUS = 7;
 
 };

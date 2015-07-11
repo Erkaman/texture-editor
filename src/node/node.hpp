@@ -11,7 +11,7 @@ public:
     /*
       TYPEDEFS
      */
-    typedef Arg** const_iterator;
+    typedef Arg** iterator;
 
 private:
 
@@ -20,7 +20,7 @@ private:
     size_t m_numArgs;
 
     int m_index;
-    const_iterator itCend;
+    iterator itEnd;
 
 protected:
 
@@ -38,7 +38,7 @@ public:
 
     /*
      */
-    const_iterator cbegin();
-    const_iterator cend();
+    iterator begin();
+    iterator end();
 
 };

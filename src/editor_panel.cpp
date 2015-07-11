@@ -3,6 +3,9 @@
 
 #include <stdio.h>
 
+#include "arg/arg.hpp"
+
+
 class wxInt : public wxObject {
 private:
 
@@ -27,7 +30,18 @@ EditorPanel::EditorPanel(wxPanel * parent)
 
 void EditorPanel::ShowNode(Node* node) {
 
-    static int i = 20;
+    /*
+      Delete the old views.
+     */
+
+    // new we add the new views.
+    for(Node::iterator it = node->begin(); it != node->end(); ++it) {
+	Arg* arg = *it;
+
+	arg->CreateView(this,  wxPoint(20, 20) );
+    }
+
+/*    static int i = 20;
 
     if(oldButton1 != NULL) {
 //	printf("remove button\n");
@@ -43,7 +57,7 @@ void EditorPanel::ShowNode(Node* node) {
 //    Bind(wxEVT_BUTTON, &EditorPanel::OnEvent, this, wxID_ANY,wxID_ANY, new wxInt(i+3));
 
 
-    i += 40;
+i += 40;*/
 
 //    printf("index. %d\n", node->GetIndex());
 }

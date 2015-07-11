@@ -1,10 +1,21 @@
 #pragma once
 
+#include "arg_view.hpp"
 
-class IntArgView {
-    Button;
-    Button;
-    TextField;
+class IntArg;
 
-    IngArg model;
-}
+class IntArgView : public ArgView {
+
+private:
+    wxButton* m_minusButton;
+    wxButton* m_plusButton;
+
+    wxTextCtrl* m_intTextCtrl;
+
+    IntArg* m_model;
+
+public:
+
+    IntArgView(wxWindow *parent, const wxPoint& pos, IntArg* model);
+
+};

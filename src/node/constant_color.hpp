@@ -11,7 +11,7 @@ private:
 
 public:
 
-    ConstantColor();
+    ConstantColor(const int index);
     virtual ~ConstantColor() {}
 
 

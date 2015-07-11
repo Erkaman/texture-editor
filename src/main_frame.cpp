@@ -50,3 +50,8 @@ void MainFrame::OnAbout(wxCommandEvent& event) {
     wxMessageBox( "This is an awesome app",
                   "About Hello World", wxOK | wxICON_INFORMATION );
 }
+
+
+void MainFrame::ShowNodeInEditor(Node* node) {
+    m_editorPanel->ShowNode(node);
+}

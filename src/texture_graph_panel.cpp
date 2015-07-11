@@ -10,12 +10,12 @@ static constexpr int CONSTANT_COLOR_ITEM_ID = 102;
 
 void TextureGraphPanel::CreateConstantColorNode(const wxPoint& point) {
     int index = m_nodes.size();
-    m_nodes.push_back(new TextureGraphNode(this,point, index, new ConstantColor()));
+    m_nodes.push_back(new TextureGraphNode(this,point, index, new ConstantColor(index)));
 }
 
 TextureGraphPanel::TextureGraphPanel(wxPanel * parent, MainFrame* mainFrame):
     wxPanel(parent, -1, wxPoint(-1, -1), wxSize(-1, -1), wxBORDER_SIMPLE),
-    m_selectedNodeIndex(-1), m_mainFrame(mainFrame){
+    m_mainFrame(mainFrame), m_selectedNodeIndex(-1){
 
     CreateConstantColorNode(wxPoint(100,100));
 
@@ -63,7 +63,7 @@ void TextureGraphPanel::SelectNode(int nodeIndex) {
     if(nodeIndex != m_selectedNodeIndex) {
 	m_nodes[nodeIndex]->Select(true);
 
-
+	m_mainFrame->ShowNodeInEditor(m_nodes[nodeIndex]->GetNode());
 	// here we populate controls.
 
     }

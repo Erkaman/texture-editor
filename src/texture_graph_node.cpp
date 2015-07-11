@@ -7,10 +7,10 @@
 TextureGraphNode::TextureGraphNode(TextureGraphPanel* parent, const wxPoint& pos, const int index, Node* node):
     wxPanel(parent, wxID_ANY, pos, wxSize(NODE_WIDTH, NODE_HEIGHT), wxBORDER_NONE),
     m_node(node),
+    m_parent(parent),
     m_circleFont(wxFontInfo(10).Bold()),
     m_nameLabelFont(wxFontInfo(9)),
     m_index(index),
-    m_parent(parent),
     m_isSelected(false),
     m_isMouseDown(false)
 {
@@ -33,7 +33,7 @@ TextureGraphNode::TextureGraphNode(TextureGraphPanel* parent, const wxPoint& pos
 }
 
 TextureGraphNode::~TextureGraphNode() {
-    delete m_node;
+    wxDELETE(m_node);
 }
 
 
@@ -107,4 +107,8 @@ void TextureGraphNode::MouseMoved(wxMouseEvent& event) {
 
         Move( m_parent->ScreenToClient( wxPoint(newX, newY) ) );
     }
+}
+
+Node* TextureGraphNode::GetNode() const {
+    return m_node;
 }

@@ -69,6 +69,8 @@ public:
 
     void Select(bool flag);
 
+    Node* GetNode() const;
+
 
     /*
       CONSTANTS

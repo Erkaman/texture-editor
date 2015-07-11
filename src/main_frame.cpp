@@ -1,7 +1,7 @@
 #include "main_frame.hpp"
 
 #include "texture_graph_panel.hpp"
-#include "right_panel.hpp"
+#include "editor_panel.hpp"
 
 MainFrame::MainFrame(const wxString& title)
     : wxFrame(NULL, wxID_ANY, title, wxPoint(100,300) /*wxDefaultPosition*/, wxSize(890, 650)) {
@@ -31,11 +31,11 @@ MainFrame::MainFrame(const wxString& title)
 
     wxBoxSizer *hbox = new wxBoxSizer(wxHORIZONTAL);
 
-    m_lp = new TextureGraphPanel(m_parent);
-    m_rp = new RightPanel(m_parent);
+    m_lp = new TextureGraphPanel(m_parent, this);
+    m_editorPanel = new EditorPanel(m_parent);
 
     hbox->Add(m_lp, 3, wxEXPAND | wxALL, 0);
-    hbox->Add(m_rp, 1, wxEXPAND | wxALL, 0);
+    hbox->Add(m_editorPanel, 1, wxEXPAND | wxALL, 0);
 
     m_parent->SetSizer(hbox);
 

@@ -3,7 +3,7 @@
 #include <wx/wx.h>
 
 class TextureGraphPanel;
-class RightPanel;
+class EditorPanel;
 class wxPanel;
 
 class MainFrame : public wxFrame
@@ -15,7 +15,7 @@ public:
     void OnAbout(wxCommandEvent& event);
 
     TextureGraphPanel *m_lp;
-    RightPanel *m_rp;
+    EditorPanel *m_editorPanel;
     wxPanel *m_parent;
 
 };

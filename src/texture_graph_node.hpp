@@ -16,6 +16,8 @@ private:
 
     Node* m_node;
 
+    TextureGraphPanel* m_parent;
+
     /*
       VARIABLES USED FOR DRAWING:
      */
@@ -39,7 +41,6 @@ private:
 
     // the index of this node in the list of TextureGraphNodes in TextureGraphPanel.
     int m_index;
-    TextureGraphPanel* m_parent;
     bool m_isSelected;
     bool m_isMouseDown;
 
@@ -54,7 +55,7 @@ private:
 
 
 public:
-    TextureGraphNode(TextureGraphPanel* parent, const wxPoint& pos, const int index, Node* node);
+    TextureGraphNode(TextureGraphPanel* m_parent, const wxPoint& pos, const int index, Node* node);
     virtual ~TextureGraphNode();
 
     void OnPaint(wxPaintEvent & evt);

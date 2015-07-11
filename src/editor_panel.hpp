@@ -7,18 +7,10 @@
 we should probably use a ewxScrolledWindow  to contain the controls  here.
 
 
-
-
-
-
-
-
-
-
  */
 
-class RightPanel : public wxPanel
+class EditorPanel : public wxPanel
 {
 public:
-    RightPanel(wxPanel *parent);
+    EditorPanel(wxPanel *parent);
 };

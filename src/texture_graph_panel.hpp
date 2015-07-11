@@ -6,6 +6,7 @@
 #include <vector>
 
 class TextureGraphNode;
+class MainFrame;
 
 class TextureGraphPanel : public wxPanel
 {
@@ -15,18 +16,18 @@ private:
     /*
       INSTANCE VARIABLES:
      */
-    wxPanel *m_parent;
     wxMenu *m_contextMenu;
+    MainFrame* m_mainFrame;
 
     std::vector<TextureGraphNode*> m_nodes;
 
     wxPoint m_contextMenuPosition;
     int m_selectedNodeIndex;
 
-    void CreateTestNode(const wxPoint& point);
+    void CreateConstantColorNode(const wxPoint& point);
 
 public:
-    TextureGraphPanel(wxPanel *parent);
+    TextureGraphPanel(wxPanel *parent, MainFrame* mainFrame);
 
     void SelectNode(int nodeIndex);
 
@@ -34,6 +35,8 @@ public:
       LISTENERS
      */
     void OnRightClick(wxContextMenuEvent& event);
-    void OnCreatePerlin(wxCommandEvent& event);
+
+    void OnCreatePerlin(wxCommandEvent&);
+    void OnCreateConstantColor(wxCommandEvent&);
 
 };

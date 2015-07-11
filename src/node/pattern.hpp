@@ -6,7 +6,8 @@ class Pattern : public Node{
 
 public:
 
-    Pattern(const wxString& nameLabelString);
+    Pattern(const wxString& nameLabelString, const size_t numArgs);
+    virtual ~Pattern() {}
 
 
 };

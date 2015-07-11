@@ -1,11 +1,14 @@
 #include "texture_graph_node.hpp"
 #include "texture_graph_panel.hpp"
 
-TextureGraphNode::TextureGraphNode(TextureGraphPanel* parent, wxWindowID winid, const wxString& typeName, const wxPoint& pos, const int index):
+#include "node/node.hpp"
 
-    wxPanel(parent, winid, pos, wxSize(NODE_WIDTH, NODE_HEIGHT), wxBORDER_NONE),
+
+TextureGraphNode::TextureGraphNode(TextureGraphPanel* parent, const wxPoint& pos, const int index, Node* node):
+    wxPanel(parent, wxID_ANY, pos, wxSize(NODE_WIDTH, NODE_HEIGHT), wxBORDER_NONE),
+    m_node(node),
     m_circleFont(wxFontInfo(10).Bold()),
-    m_typeName(typeName),
+    m_nameLabelFont(wxFontInfo(9)),
     m_index(index),
     m_parent(parent),
     m_isSelected(false),
@@ -29,6 +32,11 @@ TextureGraphNode::TextureGraphNode(TextureGraphPanel* parent, wxWindowID winid, 
 
 }
 
+TextureGraphNode::~TextureGraphNode() {
+    delete m_node;
+}
+
+
 void TextureGraphNode::Render(wxDC&  dc)
 {
     dc.SetBrush(m_backgroundBrush);
@@ -38,7 +46,8 @@ void TextureGraphNode::Render(wxDC&  dc)
     dc.DrawRoundedRectangle(0,
 			    0, BOX_WIDTH, BOX_HEIGHT, 10);
 
-   dc.DrawText( wxT("eric"), 5, 5 );
+   dc.SetFont(m_nameLabelFont);
+    dc.DrawText( m_node->GetNameLabelString(), 5, 5 );
 
    dc.DrawBitmap(*bitmap,5,30, false);
 
@@ -90,16 +99,12 @@ void TextureGraphNode::Select(bool flag) {
 
 void TextureGraphNode::MouseMoved(wxMouseEvent& event) {
     if(m_isMouseDown) {
-
-
 	wxPoint mouseOnScreen = wxGetMousePosition();
 
-        int newx = mouseOnScreen.x - mouseX;
+        int newX = mouseOnScreen.x - mouseX;
 
-        int newy = mouseOnScreen.y - mouseY;
+        int newY = mouseOnScreen.y - mouseY;
 
-        Move( m_parent->ScreenToClient( wxPoint(newx, newy) ) );
-
-
+        Move( m_parent->ScreenToClient( wxPoint(newX, newY) ) );
     }
 }

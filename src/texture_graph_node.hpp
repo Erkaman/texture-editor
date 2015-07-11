@@ -3,6 +3,7 @@
 #include <wx/wx.h>
 
 class TextureGraphPanel;
+class Node;
 
 class TextureGraphNode : public wxPanel{
 
@@ -13,6 +14,8 @@ private:
       INSTANCE VARIABLES
      */
 
+    Node* m_node;
+
     /*
       VARIABLES USED FOR DRAWING:
      */
@@ -21,6 +24,7 @@ private:
     wxBitmap* bitmap;
 
     wxFont m_circleFont;
+    wxFont m_nameLabelFont;
 
     wxBrush m_backgroundBrush;
     wxPen m_unselectedOutlinePen;
@@ -32,8 +36,6 @@ private:
     /*
       MISC VARIABLES
      */
-
-    wxString m_typeName;
 
     // the index of this node in the list of TextureGraphNodes in TextureGraphPanel.
     int m_index;
@@ -52,7 +54,8 @@ private:
 
 
 public:
-    TextureGraphNode(TextureGraphPanel* parent, wxWindowID winid, const wxString& typeName, const wxPoint& pos, const int index);
+    TextureGraphNode(TextureGraphPanel* parent, const wxPoint& pos, const int index, Node* node);
+    virtual ~TextureGraphNode();
 
     void OnPaint(wxPaintEvent & evt);
     void MouseDown(wxMouseEvent& event);

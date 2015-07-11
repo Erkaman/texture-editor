@@ -1,12 +1,14 @@
 #include "texture_graph_panel.hpp"
 #include "texture_graph_node.hpp"
 
+#include "node/constant_color.hpp"
+
 
 static constexpr int PERLIN_ITEM_ID = 101;
 
 void TextureGraphPanel::CreateTestNode(const wxPoint& point) {
     int index = m_nodes.size();
-    m_nodes.push_back(new TextureGraphNode(this, wxID_ANY, wxT("Perlin"),point, index));
+    m_nodes.push_back(new TextureGraphNode(this,point, index, new ConstantColor()));
 }
 
 TextureGraphPanel::TextureGraphPanel(wxPanel * parent):

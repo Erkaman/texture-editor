@@ -60,9 +60,9 @@ include(${wxWidgets_USE_FILE})
 #LIST(APPEND game_libs glfw3)
 
 
-file(GLOB APP_SRC src/*.cpp)
+file(GLOB APP_SRC src/*.cpp src/node/*.cpp)
 
-include_directories("src")
+include_directories("src" "src/node")
 
 ADD_EXECUTABLE(app ${APP_SRC} )
 TARGET_LINK_LIBRARIES(app ${wxWidgets_LIBRARIES})

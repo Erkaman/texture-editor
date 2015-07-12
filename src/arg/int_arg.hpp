@@ -2,18 +2,30 @@
 
 #include "arg.hpp"
 
+#include <wx/string.h>
+
+class EditorPanel;
+
 class IntArg : public Arg{
 
 private:
 
     int m_val;
-    int m_min;
-    int m_max;
+    const int m_min;
+    const int m_max;
+    const int m_step;
 
 public:
 
-    IntArg( const wxString& argName, const int val, const int min, int max);
+    IntArg( const wxString& argName, const int val, const int min, int max, int step = 1);
 
-    ArgView* CreateView(wxWindow *parent) override;
+    wxString ToString()const;
+    int GetVal()const;
+    void SetVal(const int val);
+
+    void Increase();
+    void Decrease();
+
+    ArgView* CreateView(EditorPanel *parent) override;
 
 };

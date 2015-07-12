@@ -30,6 +30,8 @@ public:
 
     void SelectNode(int nodeIndex);
 
+    void UpdateNode(int index);
+
     /*
       LISTENERS
      */

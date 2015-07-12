@@ -72,3 +72,7 @@ void TextureGraphPanel::SelectNode(int nodeIndex) {
 
     m_selectedNodeIndex = nodeIndex;
 }
+
+void TextureGraphPanel::UpdateNode(int index) {
+    printf("texture graph panel update node: %d\n", index);
+}

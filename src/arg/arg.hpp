@@ -1,6 +1,6 @@
 #pragma once
 
-class wxWindow;
+class EditorPanel;
 
 #include <wx/string.h>
 
@@ -20,7 +20,7 @@ public:
 
     Arg(const wxString& argName);
 
-    virtual ArgView* CreateView(wxWindow *parent) = 0;
+    virtual ArgView* CreateView(EditorPanel *parent) = 0;
 
 
     wxString GetArgName()const;

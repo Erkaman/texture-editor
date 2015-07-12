@@ -9,6 +9,7 @@
 #include "arg/arg.hpp"
 #include "arg/arg_view.hpp"
 
+#include "main_frame.hpp"
 
 class wxInt : public wxObject {
 private:
@@ -24,9 +25,9 @@ public:
 //    friend bool operator==(const wxInt& a, int b);
 };
 
-EditorPanel::EditorPanel(wxPanel * parent)
+EditorPanel::EditorPanel(wxPanel * parent, MainFrame* mainFrame)
        : wxPanel(parent, wxID_ANY, wxDefaultPosition,
-		 wxSize(-1, -1), wxBORDER_SIMPLE), oldButton1(NULL),oldButton2(NULL){
+		 wxSize(-1, -1), wxBORDER_SIMPLE), oldButton1(NULL),oldButton2(NULL), m_mainFrame(mainFrame){
 
 }
 
@@ -37,6 +38,8 @@ void EditorPanel::ShowNode(Node* node) {
     /*
       Delete the old views.
      */
+
+    m_currentNode = node;
 
   wxFlexGridSizer *fgs = new wxFlexGridSizer(1, 2, 9, 25);
 
@@ -63,4 +66,8 @@ void EditorPanel::ShowNode(Node* node) {
 
 void EditorPanel::OnEvent(wxEvent & evt) {
     printf("button down %d!\n", (int) *((wxInt *)evt.GetEventUserData()) );
+}
+
+void EditorPanel::OnArgUpdate() {
+    m_mainFrame->UpdateNode(m_currentNode->GetIndex());
 }

@@ -37,10 +37,10 @@ MainFrame::MainFrame(const wxString& title)
 
     wxBoxSizer *hbox = new wxBoxSizer(wxHORIZONTAL);
 
-    m_lp = new TextureGraphPanel(m_parent, this);
-    m_editorPanel = new EditorPanel(m_parent);
+    m_textureGraphPanel = new TextureGraphPanel(m_parent, this);
+    m_editorPanel = new EditorPanel(m_parent, this);
 
-    hbox->Add(m_lp, 3, wxEXPAND | wxALL, 0);
+    hbox->Add(m_textureGraphPanel, 3, wxEXPAND | wxALL, 0);
     hbox->Add(m_editorPanel, 2, wxEXPAND | wxALL, 0);
 
     m_parent->SetSizer(hbox);
@@ -60,4 +60,8 @@ void MainFrame::OnAbout(wxCommandEvent& event) {
 
 void MainFrame::ShowNodeInEditor(Node* node) {
     m_editorPanel->ShowNode(node);
+}
+
+void MainFrame::UpdateNode(int index) {
+    m_textureGraphPanel->UpdateNode(index);
 }

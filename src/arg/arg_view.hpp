@@ -2,13 +2,19 @@
 
 #include <wx/panel.h>
 
+class EditorPanel;
+
 class ArgView : public wxPanel{
 
 private:
 
+    EditorPanel* m_parent;
+
 public:
 
-    ArgView(wxWindow *parent);
+    ArgView(EditorPanel *parent);
     virtual ~ArgView() {}
+
+    void OnArgUpdate();
 
 };

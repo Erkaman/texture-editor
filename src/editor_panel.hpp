@@ -3,6 +3,7 @@
 #include <wx/panel.h>
 
 class Node;
+class MainFrame;
 
 /*
 we should probably use a ewxScrolledWindow  to contain the controls  here.
@@ -17,10 +18,16 @@ private:
     wxButton* oldButton1;
     wxButton* oldButton2;
 
+    MainFrame* m_mainFrame;
+
+    Node* m_currentNode;
+
 public:
-    EditorPanel(wxPanel *parent);
+    EditorPanel(wxPanel *parent, MainFrame* mainFrame);
 
     void ShowNode(Node* node);
 
     void OnEvent(wxEvent & evt);
+
+    void OnArgUpdate();
 };

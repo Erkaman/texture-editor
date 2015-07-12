@@ -18,6 +18,11 @@ private:
 
 public:
 
-    IntArgView(wxWindow *parent, IntArg* model);
+    IntArgView(EditorPanel* parent, IntArg* model);
+
+    void UpdateTextCtrl(bool notifyGraph);
+
+    void OnButton(const wxEvent& evt);
+    void OnTextEnter(const wxEvent&);
 
 };

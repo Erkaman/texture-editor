@@ -14,12 +14,13 @@ public:
 
     void ShowNodeInEditor(Node* node);
 
+    void UpdateNode(int index);
 
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
 
 
-    TextureGraphPanel *m_lp;
+    TextureGraphPanel *m_textureGraphPanel;
     EditorPanel *m_editorPanel;
     wxPanel *m_parent;
 

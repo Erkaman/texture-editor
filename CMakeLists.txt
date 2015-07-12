@@ -1,3 +1,8 @@
+
+# how to build on windows
+# http://stackoverflow.com/a/8532797
+# https://forums.wxwidgets.org/viewtopic.php?t=40491
+
 ######################################
 #### PROJECT SETTINGS.
 ######################################

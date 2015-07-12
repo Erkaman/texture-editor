@@ -41,7 +41,7 @@ MainFrame::MainFrame(const wxString& title)
     m_editorPanel = new EditorPanel(m_parent);
 
     hbox->Add(m_lp, 3, wxEXPAND | wxALL, 0);
-    hbox->Add(m_editorPanel, 1, wxEXPAND | wxALL, 0);
+    hbox->Add(m_editorPanel, 2, wxEXPAND | wxALL, 0);
 
     m_parent->SetSizer(hbox);
 

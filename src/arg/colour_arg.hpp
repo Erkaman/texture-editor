@@ -12,6 +12,6 @@ private:
 
 public:
 
-    ColourArg();
+    ColourArg(const wxString& argName);
 
 };

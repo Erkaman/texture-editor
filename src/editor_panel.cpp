@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 #include <wx/sizer.h>
+#include <wx/stattext.h>
 
 #include "arg/arg.hpp"
 #include "arg/arg_view.hpp"
@@ -37,39 +38,27 @@ void EditorPanel::ShowNode(Node* node) {
       Delete the old views.
      */
 
-    wxBoxSizer *vbox = new wxBoxSizer(wxVERTICAL);
+  wxFlexGridSizer *fgs = new wxFlexGridSizer(1, 2, 9, 25);
+
+   wxBoxSizer *hbox = new wxBoxSizer(wxHORIZONTAL);
 
     // new we add the new views.
     for(Node::iterator it = node->begin(); it != node->end(); ++it) {
 	Arg* arg = *it;
 
-	ArgView* argView = arg->CreateView(this/*,  wxPoint(20, 20) */);
+	ArgView* argView = arg->CreateView(this);
 
-	vbox->Add(argView, 1, wxALL, 5);
+	wxStaticText *labelText = new wxStaticText(this, wxID_ANY, arg->GetArgName(), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_VERTICAL);
+
+	fgs->Add(labelText);
+	fgs->Add(argView);
+
     }
 
-    this->SetSizer(vbox);
+      hbox->Add(fgs, 1, wxALL | wxEXPAND, 15);
 
-
-/*    static int i = 20;
-
-    if(oldButton1 != NULL) {
-//	printf("remove button\n");
-	oldButton1->Destroy();
-//	oldButton2->Destroy();
-    }
-
-    oldButton1 = new wxButton(this, wxID_ANY, wxString::Format(wxT("button %i"),i), wxPoint(20, i));
-//    oldButton2 = new wxButton(this, wxID_ANY, wxString::Format(wxT("button %i"),i), wxPoint(70, i));
-
-
-    Bind(wxEVT_BUTTON, &EditorPanel::OnEvent, this, wxID_ANY,wxID_ANY, new wxInt(i));
-//    Bind(wxEVT_BUTTON, &EditorPanel::OnEvent, this, wxID_ANY,wxID_ANY, new wxInt(i+3));
-
-
-i += 40;*/
-
-//    printf("index. %d\n", node->GetIndex());
+      this->SetSizer(hbox);
+      this->Layout();
 }
 
 void EditorPanel::OnEvent(wxEvent & evt) {

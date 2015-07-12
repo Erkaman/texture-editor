@@ -2,7 +2,7 @@
 
 #include "int_arg_view.hpp"
 
-IntArg::IntArg( const int val, const int min, int max): m_val(val), m_min(min), m_max(max) {
+IntArg::IntArg(const wxString& argName,  const int val, const int min, int max): Arg(argName),m_val(val), m_min(min), m_max(max) {
 
 }
 

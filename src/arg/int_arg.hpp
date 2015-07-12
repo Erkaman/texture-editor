@@ -12,7 +12,7 @@ private:
 
 public:
 
-    IntArg( const int val, const int min, int max);
+    IntArg( const wxString& argName, const int val, const int min, int max);
 
     ArgView* CreateView(wxWindow *parent) override;
 

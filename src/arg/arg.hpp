@@ -2,6 +2,8 @@
 
 class wxWindow;
 
+#include <wx/string.h>
+
 class ArgView;
 
 
@@ -10,9 +12,16 @@ class ArgView;
  */
 class Arg {
 
+private:
+
+    wxString m_argName;
+
 public:
 
-    Arg();
+    Arg(const wxString& argName);
 
     virtual ArgView* CreateView(wxWindow *parent) = 0;
+
+
+    wxString GetArgName()const;
 };

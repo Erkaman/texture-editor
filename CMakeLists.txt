@@ -67,7 +67,18 @@ include(${wxWidgets_USE_FILE})
 
 file(GLOB APP_SRC src/*.cpp src/node/*.cpp src/arg/*.cpp)
 
-include_directories("src" "src/node" "src/arg")
+SET(app_include "src" "src/node" "src/arg")
+
+SET(ewa_include "${CMAKE_SOURCE_DIR}/../tuhu/")
+
+
+#MESSAGE("app:  ${app_include}" )
+
+
+include_directories(${app_include}  ${ewa_include} )
 
 ADD_EXECUTABLE(app ${APP_SRC} )
-TARGET_LINK_LIBRARIES(app ${wxWidgets_LIBRARIES})
+
+TARGET_LINK_LIBRARIES(app ${wxWidgets_LIBRARIES} ${CMAKE_SOURCE_DIR}/../tuhu/build/libewa.a)
+
+#target_link_libraries(main ${CMAKE_SOURCE_DIR}/libbingitup.a)

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <GL/glew.h>
 #include <wx/glcanvas.h>
 
 class wxGLContext;
@@ -13,7 +14,10 @@ private:
 
      wxGLContext*	m_context;
 
-    void OnPaint(wxPaintEvent& event);
+    void OnPaint(wxPaintEvent&);
+    void Paint();
+
+    bool m_initialized;
 
 public:
 

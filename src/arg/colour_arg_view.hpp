@@ -4,12 +4,13 @@
 
 class ColourArg;
 class wxStaticBitmap;
+class wxColourPickerCtrl;
+class wxColourPickerEvent;
 
 class ColourArgView : public ArgView {
 
 private:
-    wxButton* m_colorButton;
-    wxStaticBitmap* m_colorBitmap;
+    wxColourPickerCtrl* m_colorButton;
 
     ColourArg* m_model;
 
@@ -17,7 +18,7 @@ public:
 
     ColourArgView(EditorPanel* parent, ColourArg* model);
 
-    void OnButton(const wxEvent& evt);
+    void OnColorUpdate(const wxColourPickerEvent& evt);
 
-    void UpdateBitmap(bool notifyGraph);
+    void UpdateModel(bool notifyGraph);
 };

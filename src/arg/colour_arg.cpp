@@ -12,3 +12,8 @@ ArgView* ColourArg::CreateView(EditorPanel *parent) {
 wxColour ColourArg::GetValue() const {
     return m_value;
 }
+
+
+void ColourArg::SetValue(const wxColour& value) {
+    m_value = value;
+}

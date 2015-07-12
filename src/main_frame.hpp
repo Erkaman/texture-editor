@@ -1,6 +1,6 @@
 #pragma once
 
-#include <wx/wx.h>
+#include <wx/frame.h>
 
 class TextureGraphPanel;
 class EditorPanel;

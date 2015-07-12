@@ -1,6 +1,6 @@
 #pragma once
 
-#include <wx/wx.h>
+class wxWindow;
 
 class ArgView;
 

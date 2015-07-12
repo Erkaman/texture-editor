@@ -3,6 +3,12 @@
 #include "texture_graph_panel.hpp"
 #include "editor_panel.hpp"
 
+#include <wx/menu.h>
+#include <wx/sizer.h>
+#include <wx/msgdlg.h>
+
+
+
 MainFrame::MainFrame(const wxString& title)
     : wxFrame(NULL, wxID_ANY, title, wxPoint(100,300) /*wxDefaultPosition*/, wxSize(890, 650)) {
 

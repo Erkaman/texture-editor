@@ -1,6 +1,5 @@
 #pragma once
 
-#include <wx/wx.h>
 #include <wx/panel.h>
 
 #include <vector>

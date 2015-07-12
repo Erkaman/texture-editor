@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 
-#include "arg/arg.hpp"
+#include <wx/sizer.h>
 
+#include "arg/arg.hpp"
 #include "arg/arg_view.hpp"
 
 

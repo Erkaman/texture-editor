@@ -2,6 +2,8 @@
 
 #include "arg_view.hpp"
 
+class wxTextCtrl;
+
 class IntArg;
 
 class IntArgView : public ArgView {

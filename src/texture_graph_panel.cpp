@@ -4,6 +4,8 @@
 
 #include "node/constant_color.hpp"
 
+#include <wx/menu.h>
+
 
 static constexpr int PERLIN_ITEM_ID = 101;
 static constexpr int CONSTANT_COLOR_ITEM_ID = 102;

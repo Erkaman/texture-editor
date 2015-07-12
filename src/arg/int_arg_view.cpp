@@ -2,6 +2,9 @@
 
 #include <stdio.h>
 
+#include <wx/sizer.h>
+#include <wx/button.h>
+
 IntArgView::IntArgView(wxWindow *parent, IntArg* model): ArgView(parent), m_model(model) {
 
     printf("create int view\n");

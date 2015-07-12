@@ -3,6 +3,9 @@
 
 #include "node/node.hpp"
 
+#include <wx/dcclient.h>
+
+
 
 TextureGraphNode::TextureGraphNode(TextureGraphPanel* parent, const wxPoint& pos, const int index, Node* node):
     wxPanel(parent, wxID_ANY, pos, wxSize(NODE_WIDTH, NODE_HEIGHT), wxBORDER_NONE),

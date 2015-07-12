@@ -55,7 +55,7 @@ file(GLOB ENGINE_SRC src/*.cpp)
 ######################################
 
 set(wxWidgets_CONFIGURATION mswu)
-find_package(wxWidgets COMPONENTS core base REQUIRED)
+find_package(wxWidgets COMPONENTS core base gl REQUIRED)
 include(${wxWidgets_USE_FILE})
 
 

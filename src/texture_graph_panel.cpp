@@ -6,6 +6,8 @@
 
 #include <wx/menu.h>
 
+#include "canvas.hpp"
+
 
 static constexpr int PERLIN_ITEM_ID = 101;
 static constexpr int CONSTANT_COLOR_ITEM_ID = 102;
@@ -39,6 +41,8 @@ TextureGraphPanel::TextureGraphPanel(wxPanel * parent, MainFrame* mainFrame):
 
 
     Bind(wxEVT_CONTEXT_MENU, &TextureGraphPanel::OnRightClick, this);
+
+    new Canvas(this);
 }
 
 void TextureGraphPanel::OnRightClick(wxContextMenuEvent& event) {

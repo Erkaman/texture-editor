@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-IntArgView::IntArgView(wxWindow *parent, const wxPoint& pos, IntArg* model): ArgView(parent, pos), m_model(model) {
+IntArgView::IntArgView(wxWindow *parent, IntArg* model): ArgView(parent), m_model(model) {
 
     printf("create int view\n");
 
@@ -17,5 +17,7 @@ IntArgView::IntArgView(wxWindow *parent, const wxPoint& pos, IntArg* model): Arg
 
 
     this->SetSizer(hbox);
+
+    this->Layout();
 
 }

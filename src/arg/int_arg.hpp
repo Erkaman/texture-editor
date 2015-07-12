@@ -14,6 +14,6 @@ public:
 
     IntArg( const int val, const int min, int max);
 
-    ArgView* CreateView(wxWindow *parent, const wxPoint& pos) override;
+    ArgView* CreateView(wxWindow *parent) override;
 
 };

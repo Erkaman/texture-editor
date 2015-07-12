@@ -6,6 +6,6 @@ IntArg::IntArg( const int val, const int min, int max): m_val(val), m_min(min), 
 
 }
 
-ArgView* IntArg::CreateView(wxWindow *parent, const wxPoint& pos)  {
-    return new IntArgView(parent, pos, this);
+ArgView* IntArg::CreateView(wxWindow *parent)  {
+    return new IntArgView(parent, this);
 }

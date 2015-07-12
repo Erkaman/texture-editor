@@ -14,5 +14,5 @@ public:
 
     Arg();
 
-    virtual ArgView* CreateView(wxWindow *parent, const wxPoint& pos) = 0;
+    virtual ArgView* CreateView(wxWindow *parent) = 0;
 };

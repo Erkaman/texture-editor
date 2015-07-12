@@ -5,6 +5,8 @@
 
 #include "arg/arg.hpp"
 
+#include "arg/arg_view.hpp"
+
 
 class wxInt : public wxObject {
 private:
@@ -34,12 +36,19 @@ void EditorPanel::ShowNode(Node* node) {
       Delete the old views.
      */
 
+    wxBoxSizer *vbox = new wxBoxSizer(wxVERTICAL);
+
     // new we add the new views.
     for(Node::iterator it = node->begin(); it != node->end(); ++it) {
 	Arg* arg = *it;
 
-	arg->CreateView(this,  wxPoint(20, 20) );
+	ArgView* argView = arg->CreateView(this/*,  wxPoint(20, 20) */);
+
+	vbox->Add(argView, 1, wxALL, 5);
     }
+
+    this->SetSizer(vbox);
+
 
 /*    static int i = 20;
 

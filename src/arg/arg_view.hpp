@@ -8,7 +8,7 @@ private:
 
 public:
 
-    ArgView(wxWindow *parent, const wxPoint& pos);
+    ArgView(wxWindow *parent);
     virtual ~ArgView() {}
 
 };

@@ -16,6 +16,6 @@ private:
 
 public:
 
-    IntArgView(wxWindow *parent, const wxPoint& pos, IntArg* model);
+    IntArgView(wxWindow *parent, IntArg* model);
 
 };

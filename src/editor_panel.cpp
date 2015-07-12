@@ -26,8 +26,8 @@ public:
 };
 
 EditorPanel::EditorPanel(wxPanel * parent, MainFrame* mainFrame)
-       : wxPanel(parent, wxID_ANY, wxDefaultPosition,
-		 wxSize(-1, -1), wxBORDER_SIMPLE), oldButton1(NULL),oldButton2(NULL), m_mainFrame(mainFrame){
+    : wxPanel(parent, wxID_ANY, wxDefaultPosition,
+	      wxSize(-1, -1), wxBORDER_SIMPLE), oldButton1(NULL),oldButton2(NULL), m_mainFrame(mainFrame), m_content(NULL){
 
 }
 
@@ -37,13 +37,18 @@ void EditorPanel::ShowNode(Node* node) {
 
     /*
       Delete the old views.
-     */
+    */
+    if(m_content != NULL) {
+	m_content->Clear(true);
+    }
 
     m_currentNode = node;
 
-  wxFlexGridSizer *fgs = new wxFlexGridSizer(1, 2, 9, 25);
 
-   wxBoxSizer *hbox = new wxBoxSizer(wxHORIZONTAL);
+    wxFlexGridSizer *fgs = new wxFlexGridSizer(node->GetNumArgs(), 2, 9, 25);
+
+    m_content = new wxBoxSizer(wxHORIZONTAL);
+
 
     // new we add the new views.
     for(Node::iterator it = node->begin(); it != node->end(); ++it) {
@@ -58,10 +63,10 @@ void EditorPanel::ShowNode(Node* node) {
 
     }
 
-      hbox->Add(fgs, 1, wxALL | wxEXPAND, 15);
+    m_content->Add(fgs, 1, wxALL | wxEXPAND, 15);
 
-      this->SetSizer(hbox);
-      this->Layout();
+    this->SetSizer(m_content);
+    this->Layout();
 }
 
 void EditorPanel::OnEvent(wxEvent & evt) {

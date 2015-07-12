@@ -4,6 +4,7 @@
 
 class Node;
 class MainFrame;
+class wxBoxSizer;
 
 /*
 we should probably use a ewxScrolledWindow  to contain the controls  here.
@@ -21,6 +22,8 @@ private:
     MainFrame* m_mainFrame;
 
     Node* m_currentNode;
+
+    wxBoxSizer* m_content;
 
 public:
     EditorPanel(wxPanel *parent, MainFrame* mainFrame);

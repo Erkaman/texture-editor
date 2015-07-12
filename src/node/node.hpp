@@ -41,4 +41,6 @@ public:
     iterator begin();
     iterator end();
 
+    size_t GetNumArgs() const;
+
 };

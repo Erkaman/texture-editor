@@ -26,3 +26,7 @@ Node::iterator Node::begin() {
 Node::iterator Node::end() {
     return itEnd;
 }
+
+size_t Node::GetNumArgs() const {
+    return m_numArgs;
+}

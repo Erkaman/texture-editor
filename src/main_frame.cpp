@@ -40,7 +40,7 @@ MainFrame::MainFrame(const wxString& title)
     m_textureGraphPanel = new TextureGraphPanel(m_parent, this);
     m_editorPanel = new EditorPanel(m_parent, this);
 
-    hbox->Add(m_textureGraphPanel, 3, wxEXPAND | wxALL, 0);
+    hbox->Add(m_textureGraphPanel, 4, wxEXPAND | wxALL, 0);
     hbox->Add(m_editorPanel, 2, wxEXPAND | wxALL, 0);
 
     m_parent->SetSizer(hbox);

@@ -58,8 +58,8 @@ void EditorPanel::ShowNode(Node* node) {
 
 	wxStaticText *labelText = new wxStaticText(this, wxID_ANY, arg->GetArgName(), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_VERTICAL);
 
-	fgs->Add(labelText);
-	fgs->Add(argView);
+	fgs->Add(labelText, 0, wxLEFT | wxALIGN_CENTER_VERTICAL);
+	fgs->Add(argView, 0, wxLEFT | wxALIGN_CENTER_VERTICAL);
 
     }
 

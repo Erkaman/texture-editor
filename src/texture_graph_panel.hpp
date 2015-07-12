@@ -2,7 +2,7 @@
 
 #include <wx/panel.h>
 
-#include <vector>
+#include <wx/vector.h>
 
 class TextureGraphNode;
 class MainFrame;
@@ -18,7 +18,7 @@ private:
     wxMenu *m_contextMenu;
     MainFrame* m_mainFrame;
 
-    std::vector<TextureGraphNode*> m_nodes;
+    wxVector<TextureGraphNode*> m_nodes;
 
     wxPoint m_contextMenuPosition;
     int m_selectedNodeIndex;
